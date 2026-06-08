@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f0f0f0;
+    font-family:Arial;
+}
+
+.login{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#004080;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.erro{
+    color:red;
+    margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login">
+
+    <h2>Portal do Aluno</h2>
+
+    <input type="text" id="usuario" placeholder="Usuário">
+
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="logar()">Entrar</button>
+
+    <div class="erro" id="erro"></div>
+
+</div>
+
+<script>
+
+function logar(){
+
+    const usuario =
+        document.getElementById("usuario").value;
+
+    const senha =
+        document.getElementById("senha").value;
+
+    const usuarios = {
+
+        "jaqueline": {
+            senha: "1234",
+            pasta: "jaqueline"
+        }
+
+    };
+
+    if(
+        usuarios[usuario] &&
+        usuarios[usuario].senha === senha
+    ){
+
+        sessionStorage.setItem("logado", "sim");
+
+        sessionStorage.setItem("usuario", usuario);
+
+        window.location.href =
+            usuarios[usuario].pasta + "/index.html";
+
+    }else{
+
+        document.getElementById("erro")
+            .innerText = "Usuário ou senha inválidos";
+    }
+}
+
+</script>
+
+</body>
+</html>
