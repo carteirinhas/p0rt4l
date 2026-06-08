@@ -1,0 +1,1 @@
+Arquivos protegidos com obfuscação Base64 + carregamento dinâmico de HTML/CSS.
